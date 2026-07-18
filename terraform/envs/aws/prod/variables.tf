@@ -31,3 +31,14 @@ variable "my_ip_cidr" {
   description = "Your IP in CIDR notation, for SSH access (e.g. 203.0.113.5/32)"
   type        = string
 }
+
+variable "aws_profile" {
+  description = "aws_profile added to terraform.tfvars"
+  type        = string
+}
+
+variable "instance_count" {
+  description = "Number of fix-client EC2 instances to launch"
+  type        = number
+  default     = 3
+}

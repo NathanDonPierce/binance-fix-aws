@@ -1,0 +1,2 @@
+aws_profile = "MyProfile"
+key_pair_name = "NameOfKey"

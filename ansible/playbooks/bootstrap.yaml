@@ -1,0 +1,37 @@
+---
+- name: Configure and bootstrap EC2 instances
+  hosts: aws_ec2
+  become: true
+  gather_facts: true
+
+  tasks:
+    - name: Update all packages
+      ansible.builtin.dnf:
+        name: "*"
+        state: latest
+        update_cache: true
+
+    - name: Set timezone
+      community.general.timezone:
+        name: America/New_York
+
+    - name: Check firewalld status
+      ansible.builtin.systemd:
+        name: firewalld
+      register: firewalld_status
+
+    - name: Open k3s API port (6443/tcp) if firewalld is active
+      ansible.posix.firewalld:
+        port: 6443/tcp
+        permanent: true
+        immediate: true
+        state: enabled
+      when: firewalld_status.status.ActiveState == "active"
+
+    - name: Open Flannel VXLAN port (8472/udp) for k3s pod networking
+      ansible.posix.firewalld:
+        port: 8472/udp
+        permanent: true
+        immediate: true
+        state: enabled
+      when: firewalld_status.status.ActiveState == "active"

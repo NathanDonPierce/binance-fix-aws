@@ -1,0 +1,12 @@
+---
+- name: Ping all newly provisioned hosts
+  hosts: aws_ec2
+
+  tasks:
+    - name: Ping host
+      ping:
+      register: ping_result
+
+    - name: Output ping result
+      debug: 
+        msg: "{{inventory_hostname}}  ({{ ansible_host }}) responded: {{ ping_result.ping }}"

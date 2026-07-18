@@ -15,16 +15,12 @@ key_pair_name = "NameOfKey"
 
 3. terraform validate
 
+4. terraform plan -var "my_ip_cidr=$(curl -s https://checkip.amazonaws.com)/32"
 
-4. $myip = (Invoke-RestMethod -Uri `"https://checkip.amazonaws.com"`).Trim()
- -- Required since local IP may frequently change
-
-5. terraform plan -var "my_ip_cidr=$myip/32"
-
-6. terraform apply -var "my_ip_cidr=$myip/32
+5. terraform apply -var "my_ip_cidr=$(curl -s https://checkip.amazonaws.com)/32"
 
 
-7. terraform destroy -var "my_ip_cidr=$myip/32"
+6. terraform destroy -var "my_ip_cidr=$(curl -s https://checkip.amazonaws.com)/32"
  -- Can destroy VM when finished 
 
 Now only need to run myip command and terraform apply

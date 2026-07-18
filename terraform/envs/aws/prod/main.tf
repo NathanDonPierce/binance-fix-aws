@@ -25,19 +25,18 @@ resource "aws_security_group" "fix_client_sg" {
   }
 
   tags = {
-    Name    = "fix-client-sg"
-    Project = "fix-project"
+    Name = "fix-client-sg"
   }
 }
 
 resource "aws_instance" "fix_client" {
+  count                  = var.instance_count
   ami                    = var.ami_id
   instance_type          = var.instance_type
   key_name               = data.aws_key_pair.existing.key_name
   vpc_security_group_ids = [aws_security_group.fix_client_sg.id]
 
   tags = {
-    Name    = "fix-client"
-    Project = "fix-project"
+    Name = "fix-client-${count.index}"
   }
 }
