@@ -40,5 +40,5 @@ variable "aws_profile" {
 variable "instance_count" {
   description = "Number of ws-client EC2 instances to launch"
   type        = number
-  default     = 3
+  default     = 1
 }
