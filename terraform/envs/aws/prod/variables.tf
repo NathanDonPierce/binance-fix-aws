@@ -13,11 +13,21 @@ variable "instance_type" {
 variable "key_pair_name" {
   description = "Name of existing ssh key"
   type        = string
-  default     = "AnsibleHost"
 }
 
 variable "ssh_user" {
   description = "Default SSH user"
   type        = string
   default     = "ec2-user"
+}
+
+variable "ami_id" {
+  description = "AMI ID for RHEL 10 in aws-apnortheast1"
+  type        = string
+  default     = "ami-08d0fa6d084fda9db"
+}
+
+variable "my_ip_cidr" {
+  description = "Your IP in CIDR notation, for SSH access (e.g. 203.0.113.5/32)"
+  type        = string
 }

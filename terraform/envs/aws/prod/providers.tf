@@ -12,11 +12,11 @@ terraform {
 provider "aws" {
   region  = var.aws_region
   profile = "binance-fix-project"
-  
+
   default_tags {
     tags = {
       Environment = "Production"
-      ManagedBy = "Terraform"
+      ManagedBy   = "Terraform"
     }
   }
 }

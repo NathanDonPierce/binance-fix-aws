@@ -1,0 +1,24 @@
+# Local Terraform state - contains resource details, may include sensitive values
+*.tfstate
+*.tfstate.*
+!*.tfstate.example
+
+# Local .terraform directory - downloaded providers, plugin cache
+.terraform/
+.terraform.lock.hcl
+
+# Variable files that may contain machine-specific or sensitive values (your IP, etc.)
+*.tfvars
+*.tfvars.json
+!*.tfvars.example
+
+# Crash logs
+crash.log
+crash.*.log
+
+# CLI config that can contain credentials if ever used
+.terraformrc
+terraform.rc
+
+# Plan output files, if you ever save them
+*.tfplan
