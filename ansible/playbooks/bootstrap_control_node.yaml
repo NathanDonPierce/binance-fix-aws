@@ -1,6 +1,6 @@
 ---
 - name: Bootstrap the Ansible control node
-  hosts: tag_control_node
+  hosts: tag_ansible_control
   become: true
   gather_facts: true
 
@@ -11,6 +11,7 @@
           - git
           - python3
           - python3-pip
+          - python3-packaging
         state: present
 
     - name: Install Ansible + collections via pip
@@ -33,6 +34,8 @@
 
     - name: Install Helm
       ansible.builtin.shell: curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+      environment:
+        PATH: "/usr/local/bin:{{ ansible_env.PATH }}"
       args:
         creates: /usr/local/bin/helm
 
@@ -45,7 +48,7 @@
 
     - name: Clone the project repo
       ansible.builtin.git:
-        repo: https://github.com/yourusername/your-repo.git
-        dest: /home/ec2-user/binance-fix-aws
+        repo: https://github.com/NathanDonPierce/binance-ws-md-aws
+        dest: /home/ec2-user/binance-ws
         version: main
       become: false
