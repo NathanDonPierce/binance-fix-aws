@@ -11,34 +11,40 @@ variable "instance_type" {
 }
 
 variable "key_pair_name" {
-  description = "Name of existing ssh key"
+  description = "Name of existing EC2 key pair used for SSH access"
   type        = string
 }
 
 variable "ssh_user" {
-  description = "Default SSH user"
+  description = "Default SSH user for the chosen AMI"
   type        = string
   default     = "ec2-user"
 }
 
 variable "ami_id" {
-  description = "AMI ID for RHEL 10 in aws-apnortheast1"
+  description = "AMI ID for RHEL in the target region"
   type        = string
-  default     = "ami-08d0fa6d084fda9db"
 }
 
 variable "my_ip_cidr" {
-  description = "Your IP in CIDR notation, for SSH access (e.g. 203.0.113.5/32)"
-  type        = string
-}
-
-variable "aws_profile" {
-  description = "aws_profile added to terraform.tfvars"
+  description = "IP in CIDR notation, for SSH access to the Ansible control node"
   type        = string
 }
 
 variable "instance_count" {
-  description = "Number of ws-client EC2 instances to launch"
+  description = "Number of ws-client instances to create"
   type        = number
   default     = 1
+}
+
+variable "aws_profile" {
+  description = "AWS CLI profile to use."
+  type        = string
+  default     = ""
+}
+
+variable "project_name" {
+  description = "Project tag applied to all resources"
+  type        = string
+  default     = "ws-project"
 }
