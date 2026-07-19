@@ -45,7 +45,7 @@ resource "aws_iam_role" "ansible_control_role" {
 resource "aws_iam_role_policy" "ansible_control_policy" {
   name   = "terraform-and-ec2-describe"
   role   = aws_iam_role.ansible_control_role.id
-  policy = file("${path.module}/../../../bootstrap/iam/ec2-instance-policy.json")
+  policy = file("/home/ec2-user/binance-ws-md-aws/iam/ec2-instance-policy.json")
 }
 
 resource "aws_iam_instance_profile" "ansible_control_profile" {
