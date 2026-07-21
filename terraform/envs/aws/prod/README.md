@@ -1,10 +1,6 @@
-# Hidden Variables
+# Terraform
 
-The variable key_pair_name is stored in a terraform.tfvars file hidden by .gitignore.
-
-It is stored as:
-
-key_pair_name = "NameOfKey"
+Terraform state is stored in a dynamo db table within an s3 object, as specified in the backend.tf file.
 
 
 # Initial terraform commands to provision server through terraform:
