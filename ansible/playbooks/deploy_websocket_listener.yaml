@@ -1,6 +1,6 @@
 ---
 - name: Deploy Binance WebSocket market data listener
-  hosts: all
+  hosts: tag_ws_client
   become: true
   gather_facts: false
 
